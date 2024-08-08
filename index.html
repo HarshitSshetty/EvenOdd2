@@ -1,0 +1,68 @@
+
+<html>
+<head>
+    <title>Even Odd Finder by Harshit</title>
+    <style>
+        * { 
+            font-size: 80px; 
+            font-family: 'Ink Free', cursive; 
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Even Odd Finder</h1>
+        <form onsubmit="find()"> 
+            <input type="number" id="num" placeholder="Enter an integer"/>
+            <br/><br/>
+            <input type="submit" value="M1"/>
+            <input type="submit" value="M2"/>
+            <input type="submit" value="M3"/>
+            <br/><br/>
+            <span id="msg"></span>
+        </form>
+    </center>
+    <script>
+        function find() {
+            event.preventDefault();
+            let num = document.getElementById("num").value;
+            let msg = document.getElementById("msg");
+            let action = document.activeElement.value;
+
+            if (num === "") {
+                alert("You did not enter an integer.");
+                msg.innerHTML = "";
+                document.getElementById("num").focus();
+                return;
+            }
+
+            let n = parseInt(num);
+            let ans = "";
+
+            if (action === "M1") {
+                ans = n % 2 === 0 ? "even" : "odd";
+                msg.innerHTML = "M1 ==> " + ans;
+            } 
+            else if (action === "M2") {
+                if (n % 2 === 0) {
+                    ans = "even";
+                } else {
+                    ans = "odd";
+                }
+                msg.innerHTML = "M2 ==> " + ans;
+            } 
+            else if (action === "M3") {
+                switch (n % 2) {
+                    case 0:
+                        ans = "even";
+                        break;
+                    default:
+                        ans = "odd";
+                        break;
+                }
+                msg.innerHTML = "M3 ==> " + ans;
+            }
+        }
+    </script>
+</body>
+</html>
